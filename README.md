@@ -1,31 +1,37 @@
 # ios-index-progress
 
-查看 iOS 27 设备 Spotlight 索引进度的命令行工具。
+[中文说明](README.zh-CN.md)
 
-升级 iOS 27 后，系统会重建 Spotlight 搜索索引（包括 Spotlight、照片、邮件），期间搜索功能可能不完整。此工具可以实时查看索引完成百分比。
+A CLI tool to check the real-time Spotlight indexing progress on iOS 27 devices.
 
-## 使用方法
+After upgrading to iOS 27, the system rebuilds its entire search index (Spotlight, Photos, Mail). During this process, search may return incomplete results. This tool lets you monitor the exact completion percentage from your terminal.
+
+## Quick Start
 
 ```bash
-# 下载脚本
 curl -fsSL https://raw.githubusercontent.com/PeanutSplash/ios-index-progress/main/ios-index-progress -o ios-index-progress
 chmod +x ios-index-progress
+./ios-index-progress
+```
 
-# 默认监听 10 秒
+## Usage
+
+```bash
+# Monitor for 10 seconds (default)
 ./ios-index-progress
 
-# 自定义监听时长（秒）
+# Monitor for 30 seconds
 ./ios-index-progress 30
 ```
 
-## 前置条件
+## Prerequisites
 
-- macOS + [Homebrew](https://brew.sh)（脚本会自动安装依赖）
-- iPhone 通过 USB 数据线连接到 Mac
-- 手机上已点击「信任此电脑」
-- **手机上需要打开「设置」App** 才会产生进度日志
+- macOS with [Homebrew](https://brew.sh) (the script auto-installs dependencies)
+- iPhone connected to Mac via USB cable
+- "Trust This Computer" confirmed on the iPhone
+- **Settings app must be open on the iPhone** for progress logs to appear
 
-## 示例输出
+## Example Output
 
 ```
 📱 监听 iPhone Spotlight 索引进度（10秒）...
@@ -37,9 +43,9 @@ chmod +x ios-index-progress
 ✅ 监听结束。如需继续查看，请重新运行本脚本。
 ```
 
-## 原理
+## How It Works
 
-通过 `libimobiledevice` 的 `idevicesyslog` 工具读取 iPhone 的系统日志，过滤 `PipelineCompleteness` 关键词获取 Spotlight 索引进度。该日志来自 `com.apple.Settings` 子系统的 `Spotlight Indexing Progress` 类别（DEBUG 级别）。
+Uses `idevicesyslog` from [libimobiledevice](https://libimobiledevice.org/) to read the iPhone's system logs, filtering for the `PipelineCompleteness` keyword. This is a DEBUG-level log from the `com.apple.Settings` subsystem under the `Spotlight Indexing Progress` category — the same data shown in macOS Console.app when connected to an iOS device.
 
 ## License
 
