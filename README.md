@@ -8,39 +8,52 @@ After upgrading to iOS 27, the system rebuilds its entire search index (Spotligh
 
 ## Quick Start
 
+### macOS
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/PeanutSplash/ios-index-progress/main/ios-index-progress -o ios-index-progress
 chmod +x ios-index-progress
 ./ios-index-progress
 ```
 
+### Windows (PowerShell)
+
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/PeanutSplash/ios-index-progress/main/ios-index-progress.ps1" -OutFile "ios-index-progress.ps1"
+.\ios-index-progress.ps1
+```
+
 ## Usage
 
 ```bash
-# Monitor for 10 seconds (default)
+# macOS - monitor for 10 seconds (default)
 ./ios-index-progress
 
-# Monitor for 30 seconds
+# macOS - monitor for 30 seconds
 ./ios-index-progress 30
+
+# Windows PowerShell
+.\ios-index-progress.ps1
+.\ios-index-progress.ps1 -Duration 30
 ```
 
 ## Prerequisites
 
-- macOS with [Homebrew](https://brew.sh) (the script auto-installs dependencies)
-- iPhone connected to Mac via USB cable
+- **macOS**: [Homebrew](https://brew.sh) installed (the script auto-installs dependencies)
+- **Windows**: [Scoop](https://scoop.sh) or [Chocolatey](https://chocolatey.org) installed (the script auto-installs dependencies)
+- iPhone connected via USB cable
 - "Trust This Computer" confirmed on the iPhone
 - **Settings app must be open on the iPhone** for progress logs to appear
 
 ## Example Output
 
 ```
-📱 监听 iPhone Spotlight 索引进度（10秒）...
-   💡 请确保手机上已打开「设置」App
-   按 Ctrl+C 提前退出
+📱 Monitoring iPhone Spotlight indexing progress (10s)...
+   💡 Make sure the Settings app is open on your iPhone
 
-🔍 Spotlight 索引进度: 95%
+🔍 Spotlight indexing progress: 95%
 
-✅ 监听结束。如需继续查看，请重新运行本脚本。
+✅ Done. Run the script again to check latest progress.
 ```
 
 ## How It Works

@@ -8,6 +8,8 @@
 
 ## 使用方法
 
+### macOS
+
 ```bash
 # 下载脚本
 curl -fsSL https://raw.githubusercontent.com/PeanutSplash/ios-index-progress/main/ios-index-progress -o ios-index-progress
@@ -20,10 +22,24 @@ chmod +x ios-index-progress
 ./ios-index-progress 30
 ```
 
+### Windows (PowerShell)
+
+```powershell
+# 下载脚本
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/PeanutSplash/ios-index-progress/main/ios-index-progress.ps1" -OutFile "ios-index-progress.ps1"
+
+# 默认监听 10 秒
+.\ios-index-progress.ps1
+
+# 自定义监听时长（秒）
+.\ios-index-progress.ps1 -Duration 30
+```
+
 ## 前置条件
 
-- macOS + [Homebrew](https://brew.sh)（脚本会自动安装依赖）
-- iPhone 通过 USB 数据线连接到 Mac
+- **macOS**：安装 [Homebrew](https://brew.sh)（脚本会自动安装依赖）
+- **Windows**：安装 [Scoop](https://scoop.sh) 或 [Chocolatey](https://chocolatey.org)（脚本会自动安装依赖）
+- iPhone 通过 USB 数据线连接到电脑
 - 手机上已点击「信任此电脑」
 - **手机上需要打开「设置」App** 才会产生进度日志
 
